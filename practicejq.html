@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        window.onload=init;
+        function init(){
+            $(".error").hide();
+        }
+        
+        function validate(){
+            
+            $(".error").hide();
+
+            let name = $("#name").val();
+            let email = $("#email").val();
+            let pwd = $("#pwd").val();
+            let cpwd = $("#cpwd").val();
+            let country = $("#country").val();
+            let city = $("#city").val();
+
+            let hob=document.getElementsByName("Hob");
+            var fh=false;
+
+                  for (var i=0; i<hob.length; i++)
+                   {
+                     if (hob[i].checked==true)
+                       fh=true;
+                   }
+            let gen=document.getElementsByName("gen");
+            var fg=false;
+
+                  for (var i=0; i<gen.length; i++)
+                   {
+                     if (gen[i].checked==true)
+                       fg=true;
+                   }
+
+            var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+            var pwdLength = /^.{4,10}$/;
+
+            if (name=="")
+            {
+                $("#namee").slideDown();
+            }
+            else if (email=="")
+            {
+                $("#emaile").slideDown();
+            }
+            else if (!emailReg.test(email))
+            {
+                $("#email1").slideDown();
+            }
+
+            else if (pwd=="")
+            {
+                $("#pwde").slideDown();
+            }
+            else if (!pwdLength.test(pwd))
+            {
+                $("#pwd1").slideDown();
+            }
+            else if (cpwd=="")
+            {
+                $("#cpwde").slideDown();
+            }
+            else if (country=="-1")
+            {
+                $("#countrye").slideDown();
+            }
+            else if (city=="-1")
+            {
+                $("#citye").slideDown();
+            }
+            else if (fh==false)
+            {
+                $("#hobe").slideDown();
+            }
+            else if (fg==false)
+            {
+                $("#gene").slideDown();
+            }
+        }
+
+        function c_f(){
+            Pakistan = [ "Karachi",  "Lahore", "Islamabad","Peshawar",]
+    India = [ "Mumbai",  "Hyderabad", "Delhi",]
+    Iran = ["Tehran",  "Hyderabad", "Delhi",]
+    var country = $("#country").val()
+    var city = document.getElementById("city");
+
+if (country == 1){
+    city.innerHTML=""
+    for (PC in Pakistan){
+      
+city.innerHTML+="<option value="+1+">"+Pakistan[PC]+"</option>"
+    }
+}
+if (country == 2){
+    city.innerHTML=""
+    for (IC in India){
+      
+city.innerHTML+="<option value="+1+">"+India[IC]+"</option>"
+    }
+}
+if (country == 3){
+    city.innerHTML=""
+    for (IR in Iran){
+      
+city.innerHTML+="<option value="+1+">"+Iran[IR]+"</option>"
+    }
+}
+        }
+        function checkall(){
+                let hob=document.getElementsByName("Hob")
+                for(i=0; i<hob.length; i++){
+                    hob[i].checked=true;
+                }
+            }
+            
+            function Uncheckall(){
+                let hob=document.getElementsByName("Hob")
+                for(i=0; i<hob.length; i++){
+                    hob[i].checked=false;
+                }
+            }
+        </script>
+</head>
+<body>
+    <h1>Login Game From Hamza</h1>
+    <table>
+        <tr>
+            <td>Naam Daal</td>
+            <td><input type="text" id="name"></td>
+            <td><span class="error" style="color: red;" id="namee">Bsdk Naam Tera Baap Dale Ga</span></td>
+        </tr>
+        <tr>
+            <td>Email Daal</td>
+            <td><input type="email" id="email"></td>
+            <td><span class="error" style="color: red;" id="emaile">Bsdk Email Tera Baap Dale Ga</span></td>
+            <td><span class="error" style="color: red;" id="email1">Bsdk Email Sahi se Daal</span></td>
+        </tr>
+        <tr>
+            <td>Password Daal</td>
+            <td><input type="password" id="pwd"></td>
+            <td><span class="error" style="color: red;" id="pwde">Bsdk Password Tera Baap Dale Ga</span></td>
+            <td><span class="error" style="color: red;" id="pwd1">Bsdk Password Sahi se Daal kam se kam 4 digit Daal</span></td>
+        </tr>
+        <tr>
+            <td>Confirm Kar Password</td>
+            <td><input type="password" id="cpwd"></td>
+            <td><span class="error" style="color: red;" id="cpwde">Bsdk Password se Match Nahi ho rha Sahi se Daal Gandu</span></td>
+        </tr>
+        <tr>
+            <td>Country Select kar</td>
+            <td>
+                <select id="country" onclick="c_f()">
+                    <option value="-1">Please select Country</option>
+                    <option value="1">Pakistan</option>
+                    <option value="2">India</option>
+                    <option value="3">Iran</option>
+                </select>
+            </td>
+            <td><span class="error" style="color: red;" id="countrye">Bsdk Country Tear baap Select kare ga</span></td>
+        </tr>
+        <tr>
+            <td>Select City</td>
+            <td>
+                <select id="city">
+                    <option value="-1">Please select City</option>
+                   
+                </select>
+            </td>
+            <td><span class="error" style="color: red;" id="citye">City Select kar Bsdk</span></td>
+        </tr>
+        <tr>
+            <td>Hobbies Select Kar</td>
+            <td>
+               <input type="checkbox" name="Hob" id="h1">Lund lena
+               <input type="checkbox" name="Hob" id="h2">Gand Marana
+               <input type="checkbox" name="Hob" id="h2">Mu me lena
+            </td>
+               <td><input type="button" value="Check All" onclick="checkall()">
+               <input type="button" value="Un Check All" onclick="Uncheckall()"></td>
+            <td><span class="error" style="color: red;" id="hobe">Hobi Select kar</span></td>
+        </tr>
+        <td>Gender Select kar</td>
+            <td>
+              <input type="radio" name="gen" id="gen1">FeMale
+              <input type="radio" name="gen" id="gen2">Hijra
+            </td>
+            <td><span class="error" style="color: red;" id="gene">Gender dal</span></td>
+        </tr>
+        <tr>
+            <td><input type="Submit" onclick="validate()">&nbsp;&nbsp;&nbsp;Ye Button Daba Pura kar ke</td>
+        </tr>
+    </table>
+</body>
+</html>
